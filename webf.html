@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Builder</title>
+    <link rel="stylesheet" href="webfcss.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Rye&family=Tangerine:wght@400;700&display=swap');
+        
+    </style>
+</head>
+<body>
+    <!-- WebWizard Section -->
+    <div class="webwizard-container">
+        <div class="webwizard-hero">
+            <h1 class="website-name">WebWizard</h1>
+            <p class="tagline">Turn ideas into websites, like magic...</p>
+        </div>
+    </div>
+
+    
+    <div id="toolbar">
+        <!-- Tab Navigation -->
+        <div class="tab-container">
+            <button id="general-tab-btn" class="tab-btn" data-tab="general-tab">General</button>
+            <button id="paragraph-tab-btn" class="tab-btn" data-tab="paragraph-tab">Paragraph</button>
+            <button id="image-tab-btn" class="tab-btn" data-tab="image-tab">Image</button>
+            <button id="heading-tab-btn" class="tab-btn" data-tab="heading-tab">Heading</button>
+            <button id="table-tab-btn" class="tab-btn" data-tab="table-tab">Table</button>
+            <button id="list-tab-btn" class="tab-btn" data-tab="list-tab">List</button>
+        </div>
+    
+        <!-- Tab Content -->
+        <div id="tab-content">
+            <!-- General Tab -->
+            <div class="tab-panel" id="general-tab">
+                <button onclick="addElement('div')"><i class="fas fa-divide"></i> Add Div</button>
+                <button onclick="addElement('span')"><i class="fas fa-ellipsis-h"></i> Add Span</button>
+                <button onclick="clearWorkingSpace()"><i class="fas fa-trash"></i> Clear</button>
+                <button onclick="applyBackgroundColor()"><i class="fas fa-paint-brush"></i> Background</button>
+            </div>
+    
+            <div class="tab-panel" id="paragraph-tab">
+                <!-- Add Paragraph Button -->
+                <button id="add-paragraph-btn"><i class="fas fa-paragraph"></i> Add Paragraph</button>
+                
+                <!-- Alignment -->
+                <div class="control-group">
+                    <label for="align-select">Alignment:</label>
+                    <select id="align-select">
+                        <option value="left">Left</option>
+                        <option value="center">Center</option>
+                        <option value="right">Right</option>
+                        <option value="justify">Justify</option>
+                    </select>
+                </div>
+            
+                <!-- Font Family -->
+                <div class="control-group">
+                    <label for="font-family-select">Font Family:</label>
+                    <select id="font-family-select">
+                        <option value="Arial">Arial</option>
+                        <option value="'Times New Roman'">Times New Roman</option>
+                        <option value="Verdana">Verdana</option>
+                        <option value="'Courier New'">Courier New</option>
+                    </select>
+                </div>
+            
+                <!-- Font Size -->
+                <div class="control-group">
+                    <label for="font-size-slider">Font Size:</label>
+                    <input type="range" id="font-size-slider" min="10" max="50" value="16">
+                    <span id="font-size-value">16px</span>
+                </div>
+            
+                <!-- Margins -->
+                <div class="control-group">
+                    <label>Margins:</label>
+                    <label>Top</label>
+                    <input type="range" id="margin-slider-top" min="0" max="50" value="10">
+                    <span id="margin-value-top">10px</span>
+            
+                    <label>Right</label>
+                    <input type="range" id="margin-slider-right" min="0" max="50" value="10">
+                    <span id="margin-value-right">10px</span>
+            
+                    <label>Bottom</label>
+                    <input type="range" id="margin-slider-bottom" min="0" max="50" value="10">
+                    <span id="margin-value-bottom">10px</span>
+            
+                    <label>Left</label>
+                    <input type="range" id="margin-slider-left" min="0" max="50" value="10">
+                    <span id="margin-value-left">10px</span>
+                </div>
+            
+                <!-- Line Height -->
+                <div class="control-group">
+                    <label for="line-height-slider">Line Height:</label>
+                    <input type="range" id="line-height-slider" min="1" max="3" step="0.1" value="1.5">
+                    <span id="line-height-value">1.5</span>
+                </div>
+            
+                <!-- Letter Spacing -->
+                <div class="control-group">
+                    <label for="letter-spacing-slider">Letter Spacing:</label>
+                    <input type="range" id="letter-spacing-slider" min="0" max="10" step="0.1" value="1">
+                    <span id="letter-spacing-value">1px</span>
+                </div>
+            
+                <!-- Word Spacing -->
+                <div class="control-group">
+                    <label for="word-spacing-slider">Word Spacing:</label>
+                    <input type="range" id="word-spacing-slider" min="0" max="20" value="5">
+                    <span id="word-spacing-value">5px</span>
+                </div>
+            
+                <!-- Text Color -->
+                <div class="control-group">
+                    <label for="text-color-picker">Text Color:</label>
+                    <input type="color" id="text-color-picker" value="#000000">
+                </div>
+            
+                <!-- Background Color -->
+                <div class="control-group">
+                    <label for="background-color-picker">Background Color:</label>
+                    <input type="color" id="background-color-picker" value="#ffffff">
+                </div>
+            
+                <!-- Border Width -->
+                <div class="control-group">
+                    <label for="border-width-slider">Border Width:</label>
+                    <input type="range" id="border-width-slider" min="0" max="10" value="1">
+                    <span id="border-width-value">1px</span>
+                </div>
+            
+                <!-- Border Radius -->
+                <div class="control-group">
+                    <label for="border-radius-slider">Border Radius:</label>
+                    <input type="range" id="border-radius-slider" min="0" max="50" value="5">
+                    <span id="border-radius-value">5px</span>
+                </div>
+            
+                <!-- Text Shadow -->
+                <div class="control-group">
+                    <label for="text-shadow-slider">Text Shadow Blur:</label>
+                    <input type="range" id="text-shadow-slider" min="0" max="10" value="0">
+                    <span id="text-shadow-value">0px</span>
+                </div>
+            
+                <!-- Text Transform -->
+                <div class="control-group">
+                    <label for="text-transform-select">Text Transform:</label>
+                    <select id="text-transform-select">
+                        <option value="none">None</option>
+                        <option value="uppercase">Uppercase</option>
+                        <option value="lowercase">Lowercase</option>
+                        <option value="capitalize">Capitalize</option>
+                    </select>
+                </div>
+            
+                <!-- Opacity -->
+                <div class="control-group">
+                    <label for="opacity-slider">Opacity:</label>
+                    <input type="range" id="opacity-slider" min="0.1" max="1" step="0.1" value="1">
+                    <span id="opacity-value">1</span>
+                </div>
+            
+                <!-- Custom CSS -->
+                <div class="control-group">
+                    <label for="custom-css">Custom CSS:</label>
+                    <textarea id="custom-css" rows="4" placeholder="Enter custom CSS here..."></textarea>
+                </div>
+            </div>
+            
+            
+
+            <!-- Image Tab -->
+            <div class="tab-panel" id="image-tab">
+                <button onclick="addImage()"><i class="fas fa-image"></i> Add Image</button>
+                <button onclick="resizeImage(50)"><i class="fas fa-compress"></i> Shrink</button>
+                <button onclick="resizeImage(100)"><i class="fas fa-expand"></i> Reset Size</button>
+                <button onclick="addImageBorder()"><i class="fas fa-border-style"></i> Add Border</button>
+            </div>
+    
+            <!-- Heading Tab -->
+            <div class="tab-panel" id="heading-tab">
+                <button onclick="addElement('h1')"><i class="fas fa-h1"></i> Add H1</button>
+                <button onclick="addElement('h2')"><i class="fas fa-h2"></i> Add H2</button>
+                <button onclick="addElement('h3')"><i class="fas fa-h3"></i> Add H3</button>
+                <button onclick="addHeadingStyle()"><i class="fas fa-paint-brush"></i> Style Heading</button>
+            </div>
+    
+            <!-- Table Tab -->
+            <div class="tab-panel" id="table-tab">
+                <button onclick="addTable()"><i class="fas fa-table"></i> Add Table</button>
+                <button onclick="addRow()"><i class="fas fa-plus"></i> Add Row</button>
+                <button onclick="addColumn()"><i class="fas fa-columns"></i> Add Column</button>
+                <button onclick="deleteRow()"><i class="fas fa-minus"></i> Delete Row</button>
+                <button onclick="deleteColumn()"><i class="fas fa-trash"></i> Delete Column</button>
+            </div>
+    
+            <!-- List Tab -->
+            <div class="tab-panel" id="list-tab">
+                <button onclick="addElement('ul')"><i class="fas fa-list-ul"></i> Add Unordered List</button>
+                <button onclick="addElement('ol')"><i class="fas fa-list-ol"></i> Add Ordered List</button>
+                <button onclick="addListItem()"><i class="fas fa-plus-circle"></i> Add Item</button>
+                <button onclick="removeListItem()"><i class="fas fa-minus-circle"></i> Remove Item</button>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- User can design their website here -->
+    <div class="working-space" id="working-space" contenteditable="true">
+        
+    </div>
+
+
+    <div id="code-blocks">
+        <div class="code-section" id="html-code">
+            <h3>HTML Code</h3>
+            <pre></pre>
+        </div>
+        <div class="code-section" id="css-code">
+            <h3>CSS Code</h3>
+            <pre></pre>
+        </div>
+        <div class="code-section" id="js-code">
+            <h3>JS Code</h3>
+            <pre></pre>
+        </div>
+    </div>
+    <script src="webfjs.js"></script>
+</body>
+</html>
